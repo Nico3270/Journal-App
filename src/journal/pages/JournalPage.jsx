@@ -10,7 +10,7 @@ const drawerWidth = 240;
 export const JournalPage = () => {
     return (
         <>
-            <JounrnalLayout>
+            <JounrnalLayout className="animate__animated animate__fadeIn">
                 {/* <Typography>
                     Laborum id nisi eiusmod sit velit ea exercitation incididunt fugiat eu do culpa magna nulla. Officia aliqua tempor aliqua dolor deserunt incididunt est pariatur. Cillum nisi elit nostrud tempor veniam anim. Exercitation labore labore ea tempor enim elit dolore. Laboris velit adipisicing commodo laborum ipsum ex magna incididunt labore. Consectetur officia exercitation occaecat ad aliquip aliquip nisi mollit cillum ullamco consequat. Elit do do veniam irure elit voluptate elit eiusmod dolore nisi ea adipisicing id exercitation.
                 </Typography> */}

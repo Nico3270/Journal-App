@@ -33,7 +33,7 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     const createValidators = () => {
         const formCheckedValues = {};
         for (const formField of Object.keys(formValidations)) {
-            console.log(formField);
+
             const [fn, errorMessage] = formValidations[formField];
             formCheckedValues[`${formField}Valid`] = fn(formState[formField]) ? null : errorMessage;
         }
