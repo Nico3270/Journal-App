@@ -9,24 +9,23 @@ import { checkingCredentials } from '../../store/auth/authSlice';
 import { checkingAuthentication, startGoogleSignIn, startLoginWithEmailPassword } from '../../store/auth/thunks';
 import { useMemo } from 'react';
 
+const formData = {
+    email: "",
+    password: "",
+};
 export const LoginPage = () => {
     const dispatch = useDispatch();
     const { status, errorMessage } = useSelector(state => state.auth);
-    console.log(status);
+    
 
-    const { email, password, onInputChange } = useForm({
-        email: "",
-        password: "",
-    });
+    const { email, password, onInputChange } = useForm(formData);
 
     const isAuthenticating = useMemo(() => status === "checking", [status])
 
     const onSubmit = (event) => {
         event.preventDefault();
-        console.log({ email, password });
-        dispatch(checkingAuthentication());
+        // dispatch(checkingAuthentication());
         dispatch(startLoginWithEmailPassword({ email, password }));
-
     };
 
     const onGoogleSignIn = () => {

@@ -1,10 +1,15 @@
 import { TurnedInNot } from "@mui/icons-material"
 import { Box, Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { SideBarItem } from "./SideBarItem";
+import { setActiveNote } from "../../store/journal/journalSlice";
 
 
 export const SideBar = ({ drawerWidth }) => {
-    const {displayName} = useSelector(state => state.auth)
+    const dispatch = useDispatch();
+    const {displayName} = useSelector(state => state.auth);
+    const {notes} = useSelector(state => state.journal);
+    
     return (
         <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}>
             <Drawer variant="permanent" open sx={{display:{xs:"block"}, "& .MuiDrawer-paper":{boxSizing: "border-box", width: drawerWidth}}}>
@@ -14,17 +19,9 @@ export const SideBar = ({ drawerWidth }) => {
                     <Divider />
                     <List>
                         {
-                            ["Enero", "Febrero", "Marzo", "Abril"].map((mes) => {
+                            notes.map((nota) => {
                                 return(
-                                    <ListItem key={mes} disablePadding>
-                                        <ListItemButton>
-                                            <ListItemIcon><TurnedInNot/></ListItemIcon>
-                                            <Grid container>
-                                                <ListItemText primary={mes}/>
-                                                <ListItemText secondary = "Elit anim cupidatat deserunt exercitation qui incididunt." />
-                                            </Grid>
-                                        </ListItemButton>
-                                    </ListItem>
+                                    <SideBarItem key={nota.id} nota={nota}/>
                                 )
                             })
                         }
